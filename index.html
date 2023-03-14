@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/fe72e1556a.js" crossorigin="anonymous"></script> 
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="add-task">
+                    <i class = "icon fa-solid fa-clipboard-list"></i><input id="input-task" class="add-task" onkeyup="typing()"  placeholder="Type in Your Task" data-helloworld="asdasd"/>
+                    <button id="add-button" class="add-btn"><img id="addbtn" src="add.png"> </button>
+                    
+                </div>
+                <div id="header-bottom">
+                    <p id="complete-all" class="highlight"><i class="fa-solid fa-check-double"></i>Mark all as done</p>
+                    <p id="clear-complete" class="highlight">Clear Completed</p>
+                </div>
+            </header>
+            <main>
+                <ul id="task-list"> 
+                </ul>
+            </main>
+            <footer>
+                <span id="total-tasks" style="word-spacing:0;"> <span id="task-counter">0</span>&nbsp;Tasks Left</span>
+                <div>
+                    <p id="all" style="color: black;">All</p>
+                    <p id="uncompleted">Uncompleted</p>
+                    <p id="completed">Completed</p>
+                </div>
+            </footer>
+        </div>
+        
+        <script src="script.js" async defer></script>
+    </body>
+</html>
