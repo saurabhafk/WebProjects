@@ -1,13 +1,14 @@
-//List in which tasks are stored
+//Making a list to store tasks
 let tasks =[];
-//getting html elements based on their ID's
+
+//Getting HTML Elements by IDs
 const tasklist = document.getElementById('task-list');
 const addTaskInput = document.getElementById('input-task');
 const taskCOunter = document.getElementById('task-counter');
 const addbutton = document.getElementById('add-button');
-// const enter = document.getElementById('add-task');
 
-//This function is used to add tasks to browser page
+
+//Defining a function that adds tasks to the browser page
 function addTaskToDOM(task){
     const li = document.createElement('li');
 
@@ -31,7 +32,7 @@ function renderList(){
     }
     taskCOunter.innerHTML=tasks.length;
 };
-//This function will add each task to the tasks list
+//A function to add tasks to the tasklist
 function addTask(task){
     if(task){
         tasks.push(task);
@@ -40,7 +41,10 @@ function addTask(task){
     }
 }
 
-//This function is used to delete task and it will be trggered when users clicks on delete button
+
+
+//A function to delete individual tasks when user clicks on delete button
+
 function deleteTask(taskId){
     const newTasks = tasks.filter(function(task){
         return task.id != Number(taskId);
@@ -49,7 +53,10 @@ function deleteTask(taskId){
     renderList();
 }
 
-//We can toggle the completed status of task using this function
+
+
+//A function to toggle completion of tasks
+
 function toggleTask(taskId){
     const toggleTasks= tasks.filter(function(task){
         return task.id==Number(taskId)
@@ -68,8 +75,8 @@ function toggleTask(taskId){
     }
 }
 
-/*This function will hide the add button when there is no content in input section 
-and will dislay it only when there is some data*/
+//A function to hide the add Task button when there is no input
+
 function typing(){
     if(addTaskInput.value!=""){
         addbutton.classList.replace('add-btn','add-button-active');
@@ -79,7 +86,9 @@ function typing(){
 }
 
 
+
 //This function will be triggered when user clicks on uncompleted in footer section and display alll uncompleted tasks
+
 function renderUncompleteList(){
     tasklist.innerHTML='';
     const uncompleted_tasks = tasks.filter(function(task){
@@ -91,7 +100,10 @@ function renderUncompleteList(){
     taskCOunter.innerHTML=uncompleted_tasks.length;
 }
 
+
+
 //This function will be triggered when user clicks on completed in footer section and display alll completed tasks
+
 function renderCompleteList(){
     tasklist.innerHTML='';
     const completed_tasks = tasks.filter(function(task){
@@ -103,7 +115,10 @@ function renderCompleteList(){
     taskCOunter.innerHTML=completed_tasks.length;
 }
 
+
+
 //This function will mark all tasks as completed when user clicks on complete-all in header section
+
 function completeAllTasks(){
     for(let i=0;i<tasks.length;i++){
         tasks[i].completed=true;
@@ -111,7 +126,9 @@ function completeAllTasks(){
     renderList();
 }
 
+
 //This function will delete all completed task and display on uncompleted tasks.
+
 function clearCompletedTasks(){
     const uncompletedTasksList = tasks.filter(function(task){
         return task.completed !=true;
@@ -120,7 +137,9 @@ function clearCompletedTasks(){
     renderList();
 }
 
+
 //This function will update the task object withe task name given by user and also add unique ID.
+
 function handleAddButton(){
     const text = addTaskInput.value;
     const task ={
@@ -134,7 +153,9 @@ function handleAddButton(){
 }
 
 
-//This function will evaluate on what element did user clicked and will call the respectve function to perform that event.
+
+//A collective function to handle click events and call respective functions
+
 function handleClickListener(e){
     const target = e.target;
     if(target.className == 'delete fa-solid fa-circle-xmark'){
@@ -177,6 +198,8 @@ function handleClickListener(e){
         return;
     }
 }
+
+//Getting the click/keypress input and firing the trigger functions
 
 addbutton.addEventListener('click',handleAddButton);
 addTaskInput.addEventListener('keypress',function(event){
