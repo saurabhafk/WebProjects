@@ -65,7 +65,7 @@ function toggleTask(taskId){
         const currentTask = toggleTasks[0];
         currentTask.completed=!currentTask.completed;
         renderList();
-        if(document.getElementById('uncompleted').style.color=='black'){
+        if(document.getElementById('incomplete').style.color=='black'){
             renderUncompleteList();
         }
         else if(document.getElementById('completed').style.color=='black'){
@@ -87,17 +87,17 @@ function typing(){
 
 
 
-//This function will be triggered when user clicks on uncompleted in footer section and display alll uncompleted tasks
+//This function will be triggered when user clicks on incomplete in footer section and display alll incomplete tasks
 
 function renderUncompleteList(){
     tasklist.innerHTML='';
-    const uncompleted_tasks = tasks.filter(function(task){
+    const incomplete_tasks = tasks.filter(function(task){
         return task.completed != true;
     })
-    for(let i=0;i<uncompleted_tasks.length;i++){
-        addTaskToDOM(uncompleted_tasks[i]);
+    for(let i=0;i<incomplete_tasks.length;i++){
+        addTaskToDOM(incomplete_tasks[i]);
     }
-    taskCOunter.innerHTML=uncompleted_tasks.length;
+    taskCOunter.innerHTML=incomplete_tasks.length;
 }
 
 
@@ -127,13 +127,13 @@ function completeAllTasks(){
 }
 
 
-//This function will delete all completed task and display on uncompleted tasks.
+//This function will delete all completed task and display on incomplete tasks.
 
 function clearCompletedTasks(){
-    const uncompletedTasksList = tasks.filter(function(task){
+    const incompleteTasksList = tasks.filter(function(task){
         return task.completed !=true;
     })
-    tasks=uncompletedTasksList;
+    tasks=incompleteTasksList;
     renderList();
 }
 
@@ -168,24 +168,24 @@ function handleClickListener(e){
         toggleTask(taskId);
         return;
     }
-    else if(target.id == 'uncompleted'){
+    else if(target.id == 'incomplete'){
         document.getElementById('all').style.color = 'grey';
         document.getElementById('completed').style.color = 'grey';
-        document.getElementById('uncompleted').style.color = 'black';
+        document.getElementById('incomplete').style.color = 'black';
         renderUncompleteList();
         return;
     }
     else if(target.id == 'all'){
         document.getElementById('all').style.color = 'black';
         document.getElementById('completed').style.color = 'grey';
-        document.getElementById('uncompleted').style.color = 'grey';
+        document.getElementById('incomplete').style.color = 'grey';
         renderList();
         return;
     }
     else if(target.id == 'completed'){
         document.getElementById('all').style.color = 'grey';
         document.getElementById('completed').style.color = 'black';
-        document.getElementById('uncompleted').style.color = 'grey';
+        document.getElementById('incomplete').style.color = 'grey';
         renderCompleteList();
         return;
     }
